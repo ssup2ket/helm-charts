@@ -227,3 +227,18 @@ $ helm dependency update argo-cd
 $ helm -n cicd install argo-cd argo-cd
 ```
 
+### ArgoCD Image Updater
+
+ssup2ket uses ArgoCD Image Updater to easily change app images.
+
+#### Version & Config
+
+* Version : v0.9.5
+
+#### Install
+
+Install by using kubectl
+
+```
+kubectl -n cicd apply -f argo-cd-image-updater/install.yaml 
+```
