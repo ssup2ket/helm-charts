@@ -29,8 +29,10 @@ spec:
       enabled: true
   hub: docker.io/istio
   meshConfig:
+    enableTracing: true
     defaultConfig:
-      proxyMetadata: {}
+      tracing:
+        sampling: 100.0
     enablePrometheusMerge: true
   profile: default
   tag: 1.10.2
