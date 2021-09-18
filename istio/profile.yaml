@@ -58,6 +58,16 @@ spec:
         autoscaleEnabled: true
         env: {}
         name: istio-ingressgateway
+        ports:
+        - port: 80
+          targetPort: 8080
+          name: http
+        - port: 443
+          targetPort: 8443
+          name: https
+        - port: 9100
+          targetPort: 9100
+          name: grpc-auth
         secretVolumes:
         - mountPath: /etc/istio/ingressgateway-certs
           name: ingressgateway-certs
