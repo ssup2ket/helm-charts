@@ -423,7 +423,7 @@ interBrokerListenerName: INTERNAL
 
 ## Number of Kafka brokers to deploy
 ##
-replicaCount: 1
+replicaCount: 2
 
 ## Minimal broker.id value
 ## Brokers increment their ID starting at this minimal value.
@@ -707,7 +707,7 @@ externalAccess:
     ##   - 30001
     ##   - 30002
     ##
-    nodePorts: [31012]
+    nodePorts: [31017, 31018]
     ## Use worker host ips
     useHostIPs: false
     ## When service type is NodePort, you can specify the domain used for Kafka advertised listeners.

@@ -48,9 +48,9 @@ ssup2ket service use Kafka as event queue.
 
 * Version : v2.8.0
 * Partition Count : 1
-* Replica Count : 1
+* Broker Count : 2
 * Namespace : infra
-* External Access Point : NodePort 31012
+* External Access Point : NodePort 31017,31018
 
 #### Install
 
