@@ -17,7 +17,7 @@ ssup2ket services use MySQL as RDBMS.
 * Mode : 1 Master / 1 Slave
 * Database : dev/prod
 * Namespace : infra
-* ID/PW : admin/admin
+* ID/PW : root/root
 * External Access Point
   * Primary : NodePort 31010
   * Secondary : NodePort 31012
