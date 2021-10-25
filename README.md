@@ -50,7 +50,9 @@ ssup2ket service use Kafka as event queue.
 * Partition Count : 1
 * Broker Count : 2
 * Namespace : infra
-* External Access Point : NodePort 31017,31018
+* External Access Point 
+  * Dev : NodePort 31017,31018
+  * Prod : NodePort 31019,31020
 
 #### Install
 
@@ -58,7 +60,8 @@ Install
 
 ```
 $ helm dependency update kafka
-$ helm -n infra install kafka kafka
+$ helm -n infra -f kafka/values_dev.yaml install kafka-dev kafka
+$ helm -n infra -f kafka/values_prod.yaml install kafka-prod kafka
 ```
 
 ### Redis
