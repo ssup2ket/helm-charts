@@ -15,10 +15,14 @@ spec:
     ingressGateways:
     - enabled: false
       name: istio-ingressgateway
-    - enabled: true
+    - enabled: false
       name: istio-dev-ingressgateway
       label:
         istio: dev-ingressgateway
+    - enabled: true
+      name: istio-stage-ingressgateway
+      label:
+        istio: stage-ingressgateway
     - enabled: true
       name: istio-prod-ingressgateway
       label:

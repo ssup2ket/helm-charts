@@ -15,7 +15,6 @@ ssup2ket services use MySQL as RDBMS.
 
 * Version : v8.0.25
 * Mode : 1 Master / 1 Slave
-* Database : dev/prod
 * Namespace : infra
 * ID/PW : root/root
 * External Access Point
@@ -31,13 +30,19 @@ $ helm dependency update mysql
 $ helm -n infra install mysql mysql
 ```
 
-Create database for dev/prod environments.
+Create database for stage/prod environments.
 
 ```
 $ kubectl -n infra exec -it mysql-primary-0 bash
 (mysql-primary-0)$ mysql -u root -p
-mysql> create database dev;
-mysql> create database prod;
+mysql> create database stage_auth;
+mysql> create database stage_store;
+mysql> create database stage_order;
+mysql> create database stage_payment;
+mysql> create database prod_auth;
+mysql> create database prod_store;
+mysql> create database prod_order;
+mysql> create database prod_payment;
 ```
 
 ### Kafka
@@ -60,7 +65,7 @@ Install
 
 ```
 $ helm dependency update kafka
-$ helm -n infra -f kafka/values_dev.yaml install kafka-dev kafka
+$ helm -n infra -f kafka/values_stage.yaml install kafka-stage kafka
 $ helm -n infra -f kafka/values_prod.yaml install kafka-prod kafka
 ```
 
@@ -154,7 +159,7 @@ ssup2ket services use Istio as service mesh layer.
 #### Version & Config
 
 * Version : v1.10.2
-* Components : istiod, dev ingressgateway, prod ingressgateway.
+* Components : istiod, stage ingressgateway, prod ingressgateway.
 * Namespace : istio-system, istio-operator
 * External Access Point
   * Istio Grafana : NodePort 32510
@@ -163,7 +168,7 @@ ssup2ket services use Istio as service mesh layer.
 
 #### Install
 
-Install Istio operator and Istio. profile.yml set istiod, dev ingressgateway, prod ingressgateway. 
+Install Istio operator and Istio. profile.yml set istiod, stage ingressgateway, prod ingressgateway. 
 
 ```
 $ export PATH=$PWD/istio/bin:$PATH
@@ -178,12 +183,12 @@ $ kubectl apply -f istio/samples/addons
 $ kubectl apply -f istio/samples/addons
 ```
 
-Set app-dev, app-prod namespace to istio injection.
+Set app-stage, app-prod namespace to istio injection.
 
 ```
-$ kubectl create ns app-dev
+$ kubectl create ns app-stage
 $ kubectl create ns app-prod
-$ kubectl label ns app-dev istio-injection=enabled
+$ kubectl label ns app-stage istio-injection=enabled
 $ kubectl label ns app-prod istio-injection=enabled
 ```
 
